@@ -1,45 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 18:29:45 by elara-va          #+#    #+#             */
-/*   Updated: 2025/04/17 18:38:54 by elara-va         ###   ########.fr       */
+/*   Created: 2025/04/21 17:07:29 by elara-va          #+#    #+#             */
+/*   Updated: 2025/05/02 16:48:21 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*s3;
 	size_t	i;
+	size_t	j;
 
+	if (!s1 || !s2)
+		return (NULL);
+	s3 = malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!s3)
+		return (NULL);
 	i = 0;
-	while (i < size - 1 && src[i])
+	j = 0;
+	while (s1[i])
 	{
-		dst[i] = src[i];
+		s3[j] = s1[i];
 		i++;
+		j++;
 	}
-	if (size > 0)
-		dst[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	i = 0;
+	while (s2[i])
+		s3[j++] = s2[i++];
+	s3[j] = '\0';
+	return (s3);
 }
 
 /*#include <stdio.h>
 
 int	main(void)
 {
-	char dst[20] = "Hello!";
-	char cpy_dst[20] = "Hello";
-	char src[5] = "Bye!";
-	size_t size = 5;
+	char const *s1 = "Hello";
+	char const *s2 = " everyone!";
 
-	ft_strlcpy(dst, src, size);
-	printf("Destination: %s, Length of Source: %zu\n",
-		dst, ft_strlcpy(cpy_dst, src, size));
+	printf("%s\n", ft_strjoin(s1, s2));
 	return (0);
 }*/

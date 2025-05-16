@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 19:24:49 by elara-va          #+#    #+#             */
-/*   Updated: 2025/04/19 20:51:44 by elara-va         ###   ########.fr       */
+/*   Created: 2025/04/16 17:09:09 by elara-va          #+#    #+#             */
+/*   Updated: 2025/05/10 17:20:27 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h" 
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned const char	*p1;
-	unsigned const char	*p2;
+	unsigned char	*ptr;
 
-	p1 = (unsigned const char *)s1;
-	p2 = (unsigned const char *)s2;
-	if (n == 0)
-		return (0);
-	while (*p1 && *p1 == *p2 && n > 1)
+	ptr = (unsigned char *)s;
+	while (n)
 	{
-		p1++;
-		p2++;
+		*ptr = '\0';
+		ptr++;
 		n--;
 	}
-	return (*p1 - *p2);
 }
 
 /*#include <stdio.h>
 
 int	main(void)
 {
-	const char *s1 = "ABD";
-	const char *s2 = "ABC";
+	char s[] = "ABCDEFGHI";
 	int n = 3;
 
-	printf("Difference between \"%s\" and \"%s\" up to char %d: %d\n",
-		s1, s2, n, ft_strncmp(s1, s2, n));
+	ft_bzero(s, n);
+	printf("%s\n", s + n);
 	return (0);
 }*/

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 17:44:37 by elara-va          #+#    #+#             */
-/*   Updated: 2025/04/16 20:39:31 by elara-va         ###   ########.fr       */
+/*   Created: 2025/04/17 16:58:23 by elara-va          #+#    #+#             */
+/*   Updated: 2025/05/10 17:23:32 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*ptr1;
 	unsigned char	*ptr2;
 
-	ptr1 = (unsigned char *)dest;
-	ptr2 = (unsigned char *)src;
-	while (n--)
+	if ((unsigned char *)dest < (unsigned char *)src)
 	{
-		*ptr1 = *ptr2;
-		ptr1++;
-		ptr2++;
+		ptr1 = (unsigned char *)dest;
+		ptr2 = (unsigned char *)src;
+		while (n--)
+			*ptr1++ = *ptr2++;
+	}
+	else
+	{
+		ptr1 = (unsigned char *)dest + (n - 1);
+		ptr2 = (unsigned char *)src + (n - 1);
+		while (n--)
+			*ptr1-- = *ptr2--;
 	}
 	return (dest);
 }
@@ -33,11 +39,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 int	main(void)
 {
-	char dest[] = "000000000";
-	char src[] = "ABCDEFGHI";
+	char str[100] = "ABCDEFGHI";
+	char *dest_src = str;
 	int n = 3;
 
-	printf("%s\n",(char *)ft_memcpy(dest, src, n));
-	printf("%s\n",(char *)memcpy(dest, src, n));
+	ft_memmove(dest_src + 3, dest_src, n);
+	printf("%s\n", str);
 	return (0);
 }*/

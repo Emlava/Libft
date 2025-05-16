@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 20:28:33 by elara-va          #+#    #+#             */
-/*   Updated: 2025/04/19 21:02:02 by elara-va         ###   ########.fr       */
+/*   Created: 2025/04/20 14:15:54 by elara-va          #+#    #+#             */
+/*   Updated: 2025/05/10 17:22:11 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const unsigned char	*p1;
-	const unsigned char	*p2;
+	const unsigned char	*p;
+	unsigned char		chr;
 
-	p1 = (const unsigned char *)s1;
-	p2 = (const unsigned char *)s2;
 	if (n == 0)
-		return (0);
-	while (*p1 == *p2 && n > 1)
+		return (NULL);
+	p = (const unsigned char *)s;
+	chr = (unsigned char)c;
+	while (n > 1 && *p != chr)
 	{
-		p1++;
-		p2++;
 		n--;
+		p++;
 	}
-	return (*p1 - *p2);
+	if (*p == chr)
+		return ((void *)p);
+	else
+		return (NULL);
 }
 
 /*#include <stdio.h>
 
 int	main(void)
 {
-	const char *s1 = "ABD";
-	const char *s2 = "ABC";
-	int n = 3;
+	const char *s = "ABCEFGHI";
+	char	c = 'I';
+	size_t n = 5;
 
-	printf("Difference between \"%s\" and \"%s\" up to char %d: %d\n",
-		s1, s2, n, ft_memcmp(s1, s2, n));
+	if (ft_memchr(s, c, n) == NULL)
+		printf("0\n");
+	else
+		printf("%s\n", (char *)ft_memchr(s, c, n));
 	return (0);
 }*/

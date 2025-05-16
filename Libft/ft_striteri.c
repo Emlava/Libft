@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 18:59:44 by elara-va          #+#    #+#             */
-/*   Updated: 2025/04/15 19:06:50 by elara-va         ###   ########.fr       */
+/*   Created: 2025/04/25 18:47:27 by elara-va          #+#    #+#             */
+/*   Updated: 2025/05/02 18:28:20 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i])
+	{
+		f(i, s + i);
 		i++;
-	return (i);
+	}
 }
+
+/*void	ft_tozero(unsigned int i, char *s)
+{
+	if (i > 2)
+		*s = '0';
+}
+
+#include <stdio.h>
+
+int	main(void)
+{
+	char s[] = "ABCDEFGHI";
+
+	printf("\"%s\" ", s);
+	ft_striteri(s, ft_tozero);
+	printf("becomes \"%s\"\n", s);
+	return (0);
+}*/

@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 19:15:33 by elara-va          #+#    #+#             */
-/*   Updated: 2025/04/16 16:56:43 by elara-va         ###   ########.fr       */
+/*   Created: 2025/04/19 16:35:33 by elara-va          #+#    #+#             */
+/*   Updated: 2025/05/10 17:32:15 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char	*ptr;
-	unsigned char	value;
+	size_t	i;
 
-	ptr = (unsigned char *)s;
-	value = (unsigned char)c;
-	while (n)
+	i = 0;
+	while (*s)
 	{
-		*ptr = value;
-		ptr++;
-		n--;
+		if ((unsigned char)*s == (unsigned char)c)
+			i++;
+		s++;
 	}
-	return (s);
+	if (c == '\0')
+		return ((char *)s);
+	if (i == 0)
+		return (NULL);
+	while ((unsigned char)*s != (unsigned char)c)
+		s--;
+	return ((char *)s);
 }
 
-/*#include <string.h>
-#include <stdio.h>
+/*#include <stdio.h>
 
 int	main(void)
 {
-	char s1[] = "ABCDEFGHI";
-	char s2[] = "ABCDEFGHI";
-	char c = '*';
-	int n = 3;
+	char *s = "ABCDBFBHI";
+	int c = 'B';
 
-	ft_memset(s1, c, n);
-	memset(s2, c, n);
-	printf("%s\n%s\n", s1, s2);
+	if (ft_strrchr(s, c) != NULL)
+		printf("%s\n", ft_strrchr(s, c));
+	else
+		printf("0\n");
 	return (0);
 }*/

@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 17:09:09 by elara-va          #+#    #+#             */
-/*   Updated: 2025/04/16 17:34:39 by elara-va         ###   ########.fr       */
+/*   Created: 2025/04/15 18:59:44 by elara-va          #+#    #+#             */
+/*   Updated: 2025/05/10 17:30:38 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+size_t	ft_strlen(const char *s)
 {
-	unsigned char	*ptr;
+	size_t	i;
 
-	ptr = (unsigned char *)s;
-	while (n)
-	{
-		*ptr = '\0';
-		ptr++;
-		n--;
-	}
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
-
-/*#include <stdio.h>
-
-int	main(void)
-{
-	char s[] = "ABCDEFGHI";
-	int n = 3;
-
-	ft_bzero(s, n);
-	printf("%s\n", s + n);
-	return (0);
-}*/
