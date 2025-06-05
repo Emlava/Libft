@@ -6,11 +6,11 @@
 /*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:10:08 by elara-va          #+#    #+#             */
-/*   Updated: 2025/06/03 20:53:46 by elara-va         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:51:17 by elara-va         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	manage_buf(char *buf)
 {

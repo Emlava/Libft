@@ -68,21 +68,21 @@ static	char	*create_line_to_return(char *buf, int fd,
 
 char	*get_next_line(int fd)
 {
-	static char	buf[1024][BUFFER_SIZE + 1];
+	static char	buf[BUFFER_SIZE + 1];
 	ssize_t		chars_in_buf;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	chars_in_buf = 0;
-	if (!buf[fd][0])
+	if (!buf[0])
 	{
-		chars_in_buf = read(fd, buf[fd], BUFFER_SIZE);
+		chars_in_buf = read(fd, buf, BUFFER_SIZE);
 		if (chars_in_buf <= 0)
 			return (NULL);
-		buf[fd][chars_in_buf] = '\0';
+		buf[chars_in_buf] = '\0';
 	}
-	line = create_line_to_return(buf[fd], fd, chars_in_buf);
-	manage_buf(buf[fd]);
+	line = create_line_to_return(buf, fd, chars_in_buf);
+	manage_buf(buf);
 	return (line);
 }
