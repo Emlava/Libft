@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elara-va <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: elara-va <elara-va@student.s19.be>         #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/27 15:39:02 by elara-va          #+#    #+#             */
-/*   Updated: 2025/05/10 17:16:46 by elara-va         ###   ########.fr       */
+/*   Created: 2025-08-18 15:45:27 by elara-va          #+#    #+#             */
+/*   Updated: 2025-08-18 15:45:27 by elara-va         ###   ########.be       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdint.h>
+# include <limits.h>
+# include <stdarg.h>
+# include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
